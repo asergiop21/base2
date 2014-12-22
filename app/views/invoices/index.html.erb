@@ -1,0 +1,52 @@
+<div class="col-md-12"> 
+  <div class="form-group">
+    <div class="col-md-2 sidebar">
+
+      <%= render :partial => 'filters_bar' %>
+
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div class="col-md-8 customer">
+
+        <h1>Listado de Remitos</h1>
+
+        <%= will_paginate @invoices %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Fecha</th>
+              <th>Precio</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+          <% @invoices.each do |invoice| %>
+            <tr>
+            <td><%= invoice.id %></td>
+            <td><%= l invoice.created_at, format: :submitted %></td>
+            <td><%= number_to_currency(invoice.price_total) %></td>
+            <td><%= link_to 'Show', invoice %></td>
+            <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+            <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><%= number_to_currency(@price_subtotal)  %></td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div>
+          <h4>Subtotal de Caja: <%= number_to_currency(@price_total) %></h3>
+          <h4>Total de Caja: <%= number_to_currency(@caja) %></h3>
+        </div>
+      </div>                
+    </div>                
+  </div>                
+</div>                
+<br>

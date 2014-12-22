@@ -1,0 +1,31 @@
+<h1>Listing current_accounts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Detail</th>
+      <th>Debit</th>
+      <th>Credit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @current_accounts.each do |current_account| %>
+      <tr>
+        <td><%= current_account.customer_id %></td>
+        <td><%= current_account.detail %></td>
+        <td><%= current_account.debit %></td>
+        <td><%= current_account.credit %></td>
+        <td><%= link_to 'Show', current_account %></td>
+        <td><%= link_to 'Edit', edit_current_account_path(current_account) %></td>
+        <td><%= link_to 'Destroy', current_account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Current account', new_current_account_path %>

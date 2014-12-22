@@ -1,0 +1,22 @@
+<%= simple_form_for(@user) do |f| %>
+  <div class="col-md-12">
+    <div class="col-md-8">
+      <%= f.input :name, input_html: { class:'form-control' }, label: User.human_attribute_name(:name) %>
+    </div>
+    <div clasS="col-md-8">
+      <%= f.input :email, autofocus: true, as: :email, input_html: {class: 'form-control'}, label: User.human_attribute_name(:email)%>
+    </div>
+    <div class="col-md-8">
+      <%= f.input :password, autocomplete: "off" , input_html: {class: 'form-control'}, label: User.human_attribute_name(:password) %>
+      <%= f.input :password_confirmation, autocomplete: "off" , input_html: {class: 'form-control'}, label: User.human_attribute_name(:password_confirmation) %>
+    </div>
+    <div class="col-md-8">
+      <%= f.input :role, collection: User::ROLE,  input_html:{ class: 'form-control'} , label: User.human_attribute_name(:role) %>
+    </div>
+    <div class="col-md-8"><br>
+      <%= f.submit "Crear", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
+

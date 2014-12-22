@@ -1,0 +1,37 @@
+<%= simple_form_for(@invoice_stock) do |f| %>
+  <% if @invoice_stock.errors.any? %>
+      <li><%= message %></li>
+  <% end %>
+
+  <%= f.input :name, label: 'Nombre', input_html: {class: 'form-control'} %> 
+<br>
+<br>
+      <div class="row panel panel-default">
+        <div class=" col-md-12  panel-heading">
+          <div class="col-md-4 text-center">Producto</div>
+          <div class="col-md-1 text-center">Cantidad</div>
+          <div class="col-md-1 text-center">Precio Costo</div>
+          <div class="col-md-2 text-center">Fecha Vto</div>
+          <div class="col-md-2 text-center">Categoria</div>
+          <div class="col-md-2 text-center">Precio sub</div>
+        </div>
+
+<div class="col-md-12 line3 panel-body">
+  <%= f.fields_for :stocks, method: 'get' do |ph| %>
+    <%=render 'stocks', f: ph  %>
+    
+<% end %>
+    <div class="text-center">
+    <%=link_to_add_fields 'Agregar Item', f , :stocks, class:"add_fields" %>
+  </div>
+    <div>
+      <%= f.input :price_total, label: "Precio Total" , as: :string %>
+    </div>
+</div> 
+</div>
+
+
+<div class="actions">
+  <%= f.submit "Guardar", class: 'btn btn-primary'  %>
+</div>
+<% end %>

@@ -1,0 +1,49 @@
+<%= simple_form_for @invoice, defaults: {input_html:{class: 'form-inline'}} do |f| %>
+  <div class="col-md-8 customer ">
+    <%= f.input :customer_id, as: :hidden %>
+    <%= f.input :customer_name, as: :autocomplete, label: "Cliente:",
+      url: autocomplete_customer_name_invoices_path, 
+      input_html: {'data-id-element' => '#invoice_customer_id', class: 'form-control'}
+    %>
+
+</div>
+<div class="container-fluid">
+
+  <div class=" row panel panel-default">
+    <div class="col-md-12  panel-heading">
+      <table class="line1">
+        <thead>
+          <tr>
+            <th class="col-md-6">Producto</th>
+            <th>Cantidad</th>
+            <th>Desc</th>
+            <th>Precio Unit</th>
+            <th>Precio Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <%= f.fields_for :orders, method: 'get' do |ph| %>
+            <%=render 'orders', f: ph  %>
+          <% end %>
+          <tr><td colspan="6"><%= link_to_add_fields 'Agregar  Producto' , f , :orders, class: "add_fields" %></td></tr>
+
+        </tbody>
+      </table>
+    </div> 
+  </div>
+  <div class =" total_1 pull-right col-md-4">
+    <div class="col-md-4">
+      <h4> <b>Total: $ </b></h4>
+    </div>
+    <div class="col-md-6 ">
+      <b><%= f.input :price_total, label: false, :input_html=> {class: "form-control inline "}, readonly: true, as: :string %></b>
+    </div>
+  </div>
+  <div class="form-actions col-md-4">
+    <%= f.submit "Guardar", class: 'btn btn-primary' %>
+  </div>
+
+</div>
+<% end %>

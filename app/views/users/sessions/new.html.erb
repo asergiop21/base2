@@ -1,0 +1,32 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="col-md-12">
+  <div class="modal-dialog" style="margin-bottom:0">
+    <div class="modal-content">
+      <div class="panel-heading">
+        <h3 class="panel-title"><b>Login</b></h3>
+      </div>
+      <div class="panel-body">
+        <fieldset>
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, class: "form-control input-lg", placeholder: "Email" %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password, autocomplete: "off", class: "form-control input-lg", placeholder: "Contraseña"%><br>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="checkbox">
+            <label>
+              <%= f.check_box :remember_me %> <%= f.label :recordame %>
+            </label>
+            
+          </div>
+        <% end %>
+          <!-- Change this to a button or input when using this as a form -->
+          <%= f.submit "Login",  class: "btn btn-md btn-danger"%>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

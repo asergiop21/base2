@@ -1,0 +1,2 @@
+module AccountingRecordsHelper
+end

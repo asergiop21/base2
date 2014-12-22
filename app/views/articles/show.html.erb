@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @article.name %>
+</p>
+
+<p>
+  <strong>Price cost:</strong>
+  <%= @article.price_cost %>
+</p>
+
+<p>
+  <strong>Percentaje:</strong>
+  <%= @article.percentaje %>
+</p>
+
+<p>
+  <strong>Price total:</strong>
+  <%= @article.price_total %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @article.quantity %>
+</p>
+
+<p>
+  <strong>Barcode:</strong>
+  <%= @article.barcode %>
+</p>
+
+<p>
+  <strong>Supplier:</strong>
+  <%= @article.supplier_id %>
+</p>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>

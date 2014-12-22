@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @current_account.customer_id %>
+</p>
+
+<p>
+  <strong>Detail:</strong>
+  <%= @current_account.detail %>
+</p>
+
+<p>
+  <strong>Debit:</strong>
+  <%= @current_account.debit %>
+</p>
+
+<p>
+  <strong>Credit:</strong>
+  <%= @current_account.credit %>
+</p>
+
+<%= link_to 'Edit', edit_current_account_path(@current_account) %> |
+<%= link_to 'Back', current_accounts_path %>

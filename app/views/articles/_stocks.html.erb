@@ -1,0 +1,25 @@
+ <div class="col-md-12 line2">
+
+  <div class="col-md-4">
+        <%= f.input( :name, label: false,  input_html: {
+                 class: 'form-control ',
+                 data: {'autocomplete-field' => true,
+                        'autocomplete-for' => '#invoice_orders_#{id}_article_id',
+                        'autocomplete-url' => articles_path(format: :json)
+              } 
+              }) %>
+         <%= f.input :article_id, :input_html => {class: 'form-control'} , as: :hidden, label: false%>
+
+  </div>
+  <div class=" col-md-2">
+    <%= f.input :quantity, label: false, as: :string, :input_html => {:class => "form-control  quantity "}  %>
+  </div>
+  <div class="col-md-2">
+    <%= f.input :price_unit, label: false, as: :string, :input_html => {:class => "form-control-static price_unit "}  %>
+  </div>
+  <div class="col-md-1">
+    <%= f.hidden_field :_destroy %>
+    <%= button_to "Eliminar", '#', class: "remove_fields_orders btn btn-danger form-control" %>
+  </div>
+
+</div>

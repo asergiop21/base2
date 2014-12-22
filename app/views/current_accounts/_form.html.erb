@@ -1,0 +1,25 @@
+<%= simple_form_for [@customer, @current_account] do |f| %>
+
+
+  <div class="field">
+    <%= f.input :customer_id, label: false, as: :hidden %>
+  </div>
+  
+  <table class="table">
+    <tr>
+      <td>Detalle</td>
+      <td>Pago</td>
+    </tr>
+    <tr>
+      <td><%= f.input :detail, input_html: {class: "form-control"}, label: false %></td>
+      <td><%= f.input :debit, input_html: {class: "form-control"}, as: :string, label: false%></td>
+    </tr>
+  </table>
+
+
+
+
+  <div class="actions">
+    <%= f.submit "Guardar", class: "btn btn-primary" %>
+  </div>
+<% end %>

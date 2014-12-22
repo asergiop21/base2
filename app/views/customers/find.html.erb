@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Menu de Navegacion</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+    </div>
+    <div class="col-sm-offset-2 col-md-9 col-md-offset-3">
+
+
+<h3>Listado de Remitos</h3>
+
+<table class="table">
+
+<%= will_paginate @customers %>
+  <tr>
+    <th>Fecha</th>
+    <th>Detalle</th>
+    <th>Ingreso</th>
+    <th>Pago</th>
+  </tr>
+
+<% @customers.each do |account| %>
+  <tr>
+    <td><%= l account.created_at, format: :long %></td>
+    <td><%= link_to account.detail, edit_invoice_path(account.invoice_id) if !account.invoice_id.nil?%></td>
+    <td><%= account.credit %></td>
+    <td><%= account.debit %></td>
+    <td><%= account.invoice_id %></td>
+  </tr>
+  
+<% end %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><%= number_to_currency(@subtotal[:credit])  %></td>
+    <td><%= number_to_currency(@subtotal[:debit])  %></td>
+    <td><%= number_to_currency(@total)  %></td>
+  </tr>
+  </table>
+    </div>
+    </div>
+    </div>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 1
+  detail: MyString
+  debit: 9.99
+  credit: 9.99
+
+two:
+  customer_id: 1
+  detail: MyString
+  debit: 9.99
+  credit: 9.99

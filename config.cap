@@ -1,0 +1,10 @@
+namespace :setup do
+
+  desc "Create directory tmp/pids"
+    task :upload_yml do
+      on roles(:app) do
+        execute "mkdir -p /tmp/pids"
+      end
+    end
+end
+

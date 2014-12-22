@@ -1,0 +1,84 @@
+<div class="container-fluid">
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <span class="sr-only">Menu de Navegacion</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+</div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <%= simple_form_for '', method: 'get' do |f| %>
+        <div class="articulox">
+          <%= f.input( :q, label: 'Articulos',  input_html: {
+            class: 'form-control',
+            data: {'autocomplete-field' => true,
+                   'autocomplete-for' => '#_article_id',
+                   'autocomplete-url' => articles_path(format: :json)
+          } 
+          }) %>
+        <%= f.input :article_id, as: :hidden%>
+
+        </div>
+      <% end %>
+      <br>
+      <div>
+        <%= link_to 'Nuevo Articulo', new_article_path %>
+      </div>
+
+    </div>
+    <div class="col-sm-offset-2 col-md-9 col-md-offset-3">
+      <div>
+        <% if flash[:error] %>
+          <div class="alert alert-error "><%= flash[:error]  %></div>
+        <% end %>
+        <% if notice %>
+          <div class="alert alert-success "><%= notice  %></div>
+        <% end %>
+      </div>
+      <h1 class="page-header">Listado de Articulos</h1>
+
+      <div class="table-responsive">
+        <%= will_paginate @articles %>
+        <% if @articles %>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th><%= Article.human_attribute_name(:name)%></th>
+                  <th><%= Article.human_attribute_name(:supplier)%></th>
+                  <th><%= Article.human_attribute_name(:price_total)%></th>
+                  <th><%= Article.human_attribute_name(:quantity)%></th>
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @articles.each do |article| %>
+                  <tr>
+
+                    <td><%= article.id %></td>
+                    <td><%= article.name %></td>
+                    <td><%= article.supplier.name if !article.supplier_id.nil?  %></td>
+                    <td><b><%= number_to_currency(article.price_total) %></b></td>
+                    <td><%= article.quantity %></td>
+                    <%if can? :update, @article %>
+                      <td><%= link_to 'Editar', edit_article_path(article) %></td>
+                      <td><%= link_to 'Eliminar', article, method: :delete, data: { confirm: 'Estas Seguro?' } %></td>
+                    <% end %>
+                  <% end %>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+

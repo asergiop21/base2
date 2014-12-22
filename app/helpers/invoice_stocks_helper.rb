@@ -1,0 +1,2 @@
+module InvoiceStocksHelper
+end

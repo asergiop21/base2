@@ -1,0 +1,21 @@
+<%= simple_form_for(@customer) do |f| %>
+  <div class="container"> 
+  <div class="form-inputs">
+    <div class="row-fluid">
+
+      <div class="col-md-10">
+        <div class="col-md-10 input-normal">
+
+          <%= f.input :name, label: "Nombre", input_html: {class: "form-control input-normal"} %>
+        </div>
+        <div class="col-md-10">
+          <%= f.input :lastname, label:"Apellido", input_html: {class: "form-control"} %>
+        </div>
+        <div class="actions col-md-10">
+          <%= f.submit "Guardar", class: "btn btn-primary"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

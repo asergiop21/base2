@@ -1,0 +1,17 @@
+<%= form_for '', :method => :get  do |f| %>
+  <div>
+  <ul class="nav nav-list bordered">
+
+    <li class="nav-header bordered">
+    <a data-toggle="collapse" href="#create"><%= image_tag("calendar-icon.png", height: '32') %>Fecha</a>
+    </li>
+    <li id="create" class="collapse filter-options">
+    <%= text_field_tag 'q[from]', (params[:q][:from] rescue ""), :class => "col-md-8", :data => { :value => (params[:q][:from] rescue "") } %>
+    <%= text_field_tag 'q[to]', (params[:q][:to] rescue ""), :class => "col-md-8", :data => { :value => (params[:q][:to] rescue "") } %>
+    </li>
+  </ul>
+  <div>
+    <%= f.submit  "Filtrar", class: 'btn btn-primary' %>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,29 @@
+<%= simple_form_for(@article) do |f| %>
+
+  <div class="container"> 
+  <div class="form-inputs">
+    <div class="row-fluid">
+      <%= f.error_notification %>
+      <div class="col-md-5">
+
+        <%= f.input :name, label: 'Nombre', :input_html => {class: 'form-control'} %>
+        <%= f.input :price_cost, label: 'Precio Costo', as: :string, :input_html => {class: 'form-control'} %>
+        <%= f.input :percentaje, label: 'Porcentaje',as: :string, :input_html => {class: 'form-control'} %>
+        <%= f.input :price_total, label: 'Precio Total',as: :string, :input_html => {class: 'form-control'}  %>
+        <%= f.input :quantity, label: 'Cantidad',as: :string, :input_html => {class: 'form-control'}   %>
+        <%= f.input :barcode, label: 'Codigo de Barra', :input_html => {class: 'form-control'}    %>
+        <%= f.input :supplier_id, label: 'Proveedor ' do %><br>
+          <%= f.collection_select :supplier_id,  Supplier.order(:name), :id, :name, class: "form-control", label: false %>
+      <% end  %>
+    
+      <%= f.input :category_id, label: 'Categoria ' do %><br>
+          <%= f.collection_select :category_id,  Category.order(:name), :id, :name, class: "form-control", label: false %>
+      <% end  %>
+    </div>
+      <div class="actions col-md-12">
+        <%= f.submit "Guardar", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
